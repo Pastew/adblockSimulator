@@ -2,5 +2,5 @@
 
 
 ### Authors
-https://github.com/niemcu
-https://github.com/Pastew
+* https://github.com/niemcu
+* https://github.com/Pastew
