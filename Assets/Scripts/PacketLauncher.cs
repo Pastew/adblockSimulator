@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PacketLauncher : MonoBehaviour {
+public class PacketLauncher : MonoBehaviour
+{
+    public GameObject packetPrefab;
+    public float launchForce = 10f;
 
     private FlyingPacketsContainer flyingPacketsContainer;
 
@@ -15,9 +18,33 @@ public class PacketLauncher : MonoBehaviour {
     internal void GeneratePacketGameObjectAndLaunch(Packet packet)
     {
         GameObject packetGameObject = generatePacketGameObject(packet);
+        Vector2 force = packetGameObject.transform.up * launchForce;
+        print(force);
+        Rigidbody2D rigid = packetGameObject.GetComponent<Rigidbody2D>();
+        rigid.AddForce(force, ForceMode2D.Impulse);
+
+        rigid.AddTorque(UnityEngine.Random.Range(-200, 200));
     }
 
     private GameObject generatePacketGameObject(Packet packet)
+    {
+        GameObject packetGameObject = Instantiate(packetPrefab, 
+            transform.position, 
+            transform.rotation, 
+            flyingPacketsContainer.transform);
+
+        Packet p = packetGameObject.GetComponent<Packet>();
+        p = packet;
+        p.SetState(PacketState.Flying);
+
+        SpriteRenderer sr = packetGameObject.GetComponent<SpriteRenderer>();
+        sr.sprite = packet.GetSprite();
+        packetGameObject.name = sr.sprite.name;
+
+        return packetGameObject;
+    }
+
+    private GameObject generatePacketGameObjectInCode(Packet packet)
     {
         GameObject packetGameObject = new GameObject();
         Packet p = packetGameObject.AddComponent<Packet>();
