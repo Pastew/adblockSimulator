@@ -11,9 +11,11 @@ public class Packet : MonoBehaviour
     private PacketState state;
     private PacketType packetType;
     private Vector2 destinationPosition;
+    private SplittedImage parentSplittedImage;
 
-    public Packet(int col, int row, Sprite sprite, PacketType packetType)
+    public void Init(SplittedImage parentSplittedImage, int col, int row, Sprite sprite, PacketType packetType)
     {
+        this.parentSplittedImage = parentSplittedImage;
         this.packetType = packetType;
         this.col = col;
         this.row = row;
@@ -23,7 +25,7 @@ public class Packet : MonoBehaviour
 
     private void Update()
     {
-
+        print(state);
         // Ale gunwo, popraw to.
         if (state == PacketState.MovingToDestination)
         {
@@ -46,7 +48,9 @@ public class Packet : MonoBehaviour
         }
         else if (assignedTo == PacketType.Bad)
         {
-            destinationPosition = GameObject.Find("BadImageResult").transform.position;
+            transform.position = FindObjectOfType<PacketLauncher>().transform.position;
+            transform.parent = FindObjectOfType<PacketLauncher>().transform;
+            parentSplittedImage.Enqueue(this.gameObject);
         }
 
         Invoke("SetupMoveToDestination", 0.5f);
@@ -74,6 +78,7 @@ public class Packet : MonoBehaviour
 
     private void SetupMoveToDestination()
     {
+        print("chuj");
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponent<BoxCollider2D>());
         Destroy(GetComponent<TrailRenderer>());
@@ -93,3 +98,4 @@ public class Packet : MonoBehaviour
         this.packetType = type;
     }
 }
+
