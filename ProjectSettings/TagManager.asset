@@ -41,6 +41,9 @@ TagManager:
   - name: Windows
     uniqueID: 3721449777
     locked: 0
+  - name: Cloud
+    uniqueID: 3810052439
+    locked: 0
   - name: PacketsTrail
     uniqueID: 3389803357
     locked: 0

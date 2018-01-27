@@ -32,7 +32,7 @@ public class Packet : MonoBehaviour
 
         if (state == PacketState.Flying)
         {
-            transform.Translate(Vector3.right * xSpeed * Time.deltaTime);
+            transform.Translate(Vector3.right * xSpeed * Time.deltaTime, Space.World);
             transform.Rotate(Vector3.forward * rotationSpeed);
         }
 
@@ -54,6 +54,7 @@ public class Packet : MonoBehaviour
         state = PacketState.Flying;
         this.xSpeed = xSpeed;
         this.rotationSpeed = rotationSpeed;
+        //this.rotationSpeed = 0;
     }
 
     internal void Assign(PacketType assignedTo)

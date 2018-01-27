@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Background : MonoBehaviour {
+public class ScrollableTexture : MonoBehaviour {
 
-    public float bgSpeed = 10;
+    public Vector2 translateVector;
 
     void Update () {
         Vector2 offset = GetComponent<MeshRenderer>().material.mainTextureOffset;
-        offset.y += Time.deltaTime * bgSpeed;
+        offset.x += Time.deltaTime * translateVector.x;
+        offset.y += Time.deltaTime * translateVector.y;
         GetComponent<MeshRenderer>().material.mainTextureOffset = offset;
     }
 }

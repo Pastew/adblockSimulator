@@ -38,10 +38,10 @@ public class RoundManager : MonoBehaviour
         badSplittedImage.GetComponent<SplittedImage>().packetPrefab = packetPrefab;
         badSplittedImage.Init(badImages[currentRound], PacketType.Bad);
 
-        //InvokeRepeating("LaunchNewPacket", timeBetweenLaunches[currentRound], timeBetweenLaunches[currentRound]);
+        InvokeRepeating("LaunchNextPacket", timeBetweenLaunches[currentRound], timeBetweenLaunches[currentRound]);
     }
 
-    public void LaunchNewPacket()
+    public void LaunchNextPacket()
     {
         if (goodSplittedImage.GetUnusedPacketsLeft() + badSplittedImage.GetUnusedPacketsLeft() == 0)
         {
@@ -55,7 +55,7 @@ public class RoundManager : MonoBehaviour
 
     private void FinishRound()
     {
-        CancelInvoke("LaunchNewPacket");
+        CancelInvoke("LaunchNextPacket");
         currentRound++;
         if(currentRound < badImages.Length)
             countdown.StartCountdown();
