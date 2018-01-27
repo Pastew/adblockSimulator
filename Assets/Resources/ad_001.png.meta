@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4c9e2ec7d12cfb4468e31f9d9fe892d9
-timeCreated: 1516997218
+timeCreated: 1517024770
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -106,9 +106,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 218.66666
-        width: 180.5
-        height: 109.333336
+        y: 150
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,10 +119,10 @@ TextureImporter:
       name: ad_001_1
       rect:
         serializedVersion: 2
-        x: 180
-        y: 218.66666
-        width: 180.5
-        height: 109.333336
+        x: 233
+        y: 150
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,10 +133,10 @@ TextureImporter:
       name: ad_001_2
       rect:
         serializedVersion: 2
-        x: 360
-        y: 218.66666
-        width: 180.5
-        height: 109.333336
+        x: 466
+        y: 150
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: ad_001_3
       rect:
         serializedVersion: 2
-        x: 540
-        y: 218.66666
-        width: 180.5
-        height: 109.333336
+        x: 0
+        y: 0
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,10 +161,10 @@ TextureImporter:
       name: ad_001_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 109.666664
-        width: 180.5
-        height: 109.333336
+        x: 233
+        y: 0
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,94 +175,10 @@ TextureImporter:
       name: ad_001_5
       rect:
         serializedVersion: 2
-        x: 180
-        y: 109.666664
-        width: 180.5
-        height: 109.333336
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ad_001_6
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 109.666664
-        width: 180.5
-        height: 109.333336
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ad_001_7
-      rect:
-        serializedVersion: 2
-        x: 540
-        y: 109.666664
-        width: 180.5
-        height: 109.333336
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ad_001_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0.6666641
-        width: 180.5
-        height: 109.333336
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ad_001_9
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 0.6666641
-        width: 180.5
-        height: 109.333336
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ad_001_10
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 0.6666641
-        width: 180.5
-        height: 109.333336
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ad_001_11
-      rect:
-        serializedVersion: 2
-        x: 540
-        y: 0.6666641
-        width: 180.5
-        height: 109.333336
+        x: 466
+        y: 0
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

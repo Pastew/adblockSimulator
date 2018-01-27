@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 692070fb0e236dc4cb4156326179eb95
-timeCreated: 1516996840
+timeCreated: 1517024780
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -106,9 +106,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 323.3333
-        width: 205
-        height: 161.66667
+        y: 150
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,10 +119,10 @@ TextureImporter:
       name: meme_001_1
       rect:
         serializedVersion: 2
-        x: 205
-        y: 323.3333
-        width: 205
-        height: 161.66667
+        x: 233
+        y: 150
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,10 +133,10 @@ TextureImporter:
       name: meme_001_2
       rect:
         serializedVersion: 2
-        x: 410
-        y: 323.3333
-        width: 205
-        height: 161.66667
+        x: 466
+        y: 150
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: meme_001_3
       rect:
         serializedVersion: 2
-        x: 615
-        y: 323.3333
-        width: 205
-        height: 161.66667
+        x: 0
+        y: 0
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,10 +161,10 @@ TextureImporter:
       name: meme_001_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 162.33333
-        width: 205
-        height: 161.66667
+        x: 233
+        y: 0
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,94 +175,10 @@ TextureImporter:
       name: meme_001_5
       rect:
         serializedVersion: 2
-        x: 205
-        y: 162.33333
-        width: 205
-        height: 161.66667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: meme_001_6
-      rect:
-        serializedVersion: 2
-        x: 410
-        y: 162.33333
-        width: 205
-        height: 161.66667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: meme_001_7
-      rect:
-        serializedVersion: 2
-        x: 615
-        y: 162.33333
-        width: 205
-        height: 161.66667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: meme_001_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1.3333282
-        width: 205
-        height: 161.66667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: meme_001_9
-      rect:
-        serializedVersion: 2
-        x: 205
-        y: 1.3333282
-        width: 205
-        height: 161.66667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: meme_001_10
-      rect:
-        serializedVersion: 2
-        x: 410
-        y: 1.3333282
-        width: 205
-        height: 161.66667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: meme_001_11
-      rect:
-        serializedVersion: 2
-        x: 615
-        y: 1.3333282
-        width: 205
-        height: 161.66667
+        x: 466
+        y: 0
+        width: 233.33333
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

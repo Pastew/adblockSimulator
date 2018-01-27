@@ -18,7 +18,7 @@ public class RoundManager : MonoBehaviour
         goodSplittedImage = new SplittedImage(goodImage, PacketType.Good);
         badSplittedImage = new SplittedImage(badImage, PacketType.Bad);
         packetLaunchers = FindObjectsOfType<PacketLauncher>();
-        InvokeRepeating("LaunchNewPacket", 1, 0.5f);
+        InvokeRepeating("LaunchNewPacket", 1, 1.5f);
     }
 
     public void LaunchNewPacket()
