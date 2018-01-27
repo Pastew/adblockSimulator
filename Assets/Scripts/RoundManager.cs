@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
+    public GameObject packetPrefab;
+
     public Texture2D[] goodImages;
     public Texture2D[] badImages;
 
@@ -25,9 +27,18 @@ public class RoundManager : MonoBehaviour
 
     public void StartNextRound()
     {
-        goodSplittedImage = new SplittedImage(goodImages[currentRound], PacketType.Good);
-        badSplittedImage = new SplittedImage(badImages[currentRound], PacketType.Bad);
-        InvokeRepeating("LaunchNewPacket", timeBetweenLaunches[currentRound], timeBetweenLaunches[currentRound]);
+        // Gunwo, popraw kiedyś.
+        goodSplittedImage = new GameObject().AddComponent<SplittedImage>();
+        goodSplittedImage.gameObject.transform.parent = transform;
+        goodSplittedImage.GetComponent<SplittedImage>().packetPrefab = packetPrefab;
+        goodSplittedImage.Init(goodImages[currentRound], PacketType.Good);
+
+        badSplittedImage = new GameObject().AddComponent<SplittedImage>();
+        badSplittedImage.gameObject.transform.parent = transform;
+        badSplittedImage.GetComponent<SplittedImage>().packetPrefab = packetPrefab;
+        badSplittedImage.Init(badImages[currentRound], PacketType.Bad);
+
+        //InvokeRepeating("LaunchNewPacket", timeBetweenLaunches[currentRound], timeBetweenLaunches[currentRound]);
     }
 
     public void LaunchNewPacket()
@@ -39,7 +50,7 @@ public class RoundManager : MonoBehaviour
         }
 
         PacketLauncher randomPacketLauncher = packetLaunchers[UnityEngine.Random.Range(0, packetLaunchers.Length)];
-        randomPacketLauncher.GeneratePacketGameObjectAndLaunch(getNextRandomPacketFromRandomImage());
+        randomPacketLauncher.Launch(getNextRandomPacketFromRandomImage());
     }
 
     private void FinishRound()
@@ -50,7 +61,7 @@ public class RoundManager : MonoBehaviour
             countdown.StartCountdown();
     }
 
-    private Packet getNextRandomPacketFromRandomImage()
+    private GameObject getNextRandomPacketFromRandomImage()
     {
         if (goodSplittedImage.GetUnusedPacketsLeft() + badSplittedImage.GetUnusedPacketsLeft() == 0)
         {
