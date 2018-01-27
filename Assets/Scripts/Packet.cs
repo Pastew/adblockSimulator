@@ -9,6 +9,7 @@ public class Packet : MonoBehaviour {
     private Sprite sprite;
     private PacketState state;
     private PacketType packetType;
+    private Vector2 destinationPosition;
 
     public Packet(int col, int row, Sprite sprite, PacketType packetType)
     {
@@ -17,6 +18,33 @@ public class Packet : MonoBehaviour {
         this.row = row;
         this.sprite = sprite;
         state = PacketState.NotLaunchedYet;
+    }
+
+    private void Update()
+    {
+
+        // Ale gunwo, popraw to.
+        if(state == PacketState.MoveToCorrectlyAssigned)
+        {
+            gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 3f);
+            if (Vector2.Distance(transform.position, destinationPosition) < 0.01)
+            {
+                print("DONE");
+                transform.position = destinationPosition;
+                state = PacketState.CorrectlyAssigned;
+            }
+        }
+
+        if (state == PacketState.MoveToIncorrectlyAssigned)
+        {
+            gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 3f);
+
+            if (Vector2.Distance(transform.position, destinationPosition) < 0.01)
+            {
+                transform.position = destinationPosition;
+                state = PacketState.IncorrectlyAssigned;
+            }
+        }
     }
 
     public PacketState GetState()
@@ -41,15 +69,23 @@ public class Packet : MonoBehaviour {
 
     internal void CorrectlyAssign()
     {
-        state = PacketState.CorrectlyAssigned;
-        print("success");
-
+        state = PacketState.MoveToCorrectlyAssigned;
+        SetupMoveToDestination();
     }
 
     internal void IncorrectlyAssign()
     {
-        state = PacketState.IncorrectlyAssigned;
-        print("Fail");
+        state = PacketState.MoveToIncorrectlyAssigned;
+        SetupMoveToDestination();
+    }
+
+    private void SetupMoveToDestination()
+    {
+        destinationPosition = new Vector2(100, 3000);
+        Destroy(GetComponent<Rigidbody2D>());
+        Destroy(GetComponent<BoxCollider2D>());
+        Destroy(GetComponent<TrailRenderer>());
+        transform.rotation = Quaternion.identity;
     }
 
     internal void SetType(PacketType type)
