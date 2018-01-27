@@ -8,10 +8,11 @@ public class Countdown : MonoBehaviour {
     private SpriteRenderer sr;
     public Sprite[] sprites;
 
-    int currentSprite = 0;
+    private int currentSprite;
 
     public void StartCountdown()
     {
+        currentSprite = 0;
         InvokeRepeating("NextNumber", 1, 1);
         sr = GetComponent<SpriteRenderer>();
     }
