@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Packet : MonoBehaviour {
+public class Packet : MonoBehaviour
+{
     public int col;
     public int row;
     private Sprite sprite;
@@ -24,11 +25,11 @@ public class Packet : MonoBehaviour {
     {
 
         // Ale gunwo, popraw to.
-        if(state == PacketState.MovingToDestination)
+        if (state == PacketState.MovingToDestination)
         {
             //gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 5f);
             transform.position = Vector2.Lerp(transform.position, destinationPosition, Time.deltaTime * 4f);
-            
+
             if (Vector2.Distance(transform.position, destinationPosition) < 0.1)
             {
                 transform.position = destinationPosition;
@@ -39,7 +40,7 @@ public class Packet : MonoBehaviour {
 
     internal void Assign(PacketType assignedTo)
     {
-        if(assignedTo == PacketType.Good)
+        if (assignedTo == PacketType.Good)
         {
             destinationPosition = GameObject.Find("GoodImageResult").transform.position;
         }
@@ -79,8 +80,10 @@ public class Packet : MonoBehaviour {
         transform.rotation = Quaternion.identity;
 
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        destinationPosition.x += col * sr.size.x;
-        destinationPosition.y -= row * sr.size.y;
+        float w = sr.sprite.bounds.size.x;
+        float h = sr.sprite.bounds.size.y;
+        destinationPosition.x += col * w + w * 0.5f;
+        destinationPosition.y -= row * h + h * 0.5f;
         //transform.position = destinationPosition;
         state = PacketState.MovingToDestination;
     }

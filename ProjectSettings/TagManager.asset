@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Windows
+    uniqueID: 3721449777
+    locked: 0
+  - name: PacketsTrail
+    uniqueID: 3389803357
+    locked: 0
+  - name: Packets
+    uniqueID: 722226841
+    locked: 0
+  - name: Launchers
+    uniqueID: 2883082235
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

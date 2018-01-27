@@ -73,7 +73,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -121,8 +121,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -905163939
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Time: 0.39
   m_Parameters:
@@ -226,8 +226,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 722226841
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: 4c9e2ec7d12cfb4468e31f9d9fe892d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
