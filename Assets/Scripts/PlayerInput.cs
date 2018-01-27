@@ -12,8 +12,8 @@ public class PlayerInput : MonoBehaviour {
 	
 	void Update () {
         if (Input.GetKeyDown("z"))
-            packetCollector.OpenCollector();
+            packetCollector.CollectPackets();
         else if (Input.GetKeyDown("x"))
-            packetCollector.CloseCollector();
+            packetCollector.DestroyPackets();
     }
 }

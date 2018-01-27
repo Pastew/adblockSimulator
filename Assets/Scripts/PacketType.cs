@@ -1,1 +1,1 @@
-﻿public enum PacketType { Good, Bad };
+﻿public enum PacketType { Good, Bad, None };

@@ -34,9 +34,9 @@ public class WebCam : MonoBehaviour
         }
 
         if (redPixelsNumber > redColorCounterThreshold)
-            packetCollector.CloseCollector();
+            packetCollector.DestroyPackets();
         else
-            packetCollector.OpenCollector();
+            packetCollector.TurnOff();
 
     }
 }

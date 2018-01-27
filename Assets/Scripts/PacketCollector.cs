@@ -5,13 +5,12 @@ using UnityEngine;
 public class PacketCollector : MonoBehaviour
 {
 
-    private ParticleSystem redParticleSystem, greenParticleSystem;
-    private PacketType curentPacketType = PacketType.Good;
+    private ParticleSystem particleSystem;
+    private PacketType curentPacketType = PacketType.None;
 
     void Start()
     {
-        redParticleSystem = transform.Find("RedParticleSystem").GetComponent<ParticleSystem>();
-        greenParticleSystem = transform.Find("GreenParticleSystem").GetComponent<ParticleSystem>();
+        particleSystem = transform.Find("RedParticleSystem").GetComponent<ParticleSystem>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,31 +27,32 @@ public class PacketCollector : MonoBehaviour
         packet.Assign(curentPacketType);
     }
 
-    public void OpenCollector()
+    public void CollectPackets()
     {
         if (curentPacketType != PacketType.Good)
-            SetColor(PacketType.Good);
+        {
+            curentPacketType = PacketType.Good;
+            particleSystem.startColor = Color.green;
+        }
     }
 
-    public void CloseCollector()
+    public void DestroyPackets()
     {
         if (curentPacketType != PacketType.Bad)
-            SetColor(PacketType.Bad);
+        {
+            curentPacketType = PacketType.Bad;
+            particleSystem.startColor = Color.red;
+        }
     }
 
-    private void SetColor(PacketType packetType)
+    public void TurnOff()
     {
-        curentPacketType = packetType;
-
-        if (packetType == PacketType.Bad)
+        if (curentPacketType != PacketType.None)
         {
-            redParticleSystem.Play();
-            greenParticleSystem.Stop();
-        }
-        else if (packetType == PacketType.Good)
-        {
-            redParticleSystem.Stop();
-            greenParticleSystem.Play();
+            curentPacketType = PacketType.None;
+            Color myColor = Color.gray;
+            myColor.a = 0.4f;
+            particleSystem.startColor = myColor;
         }
     }
 }
