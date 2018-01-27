@@ -4406,6 +4406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goodImage: {fileID: 2800000, guid: 692070fb0e236dc4cb4156326179eb95, type: 3}
   badImage: {fileID: 2800000, guid: 4c9e2ec7d12cfb4468e31f9d9fe892d9, type: 3}
+  timeBetweenLaunches: 1
 --- !u!4 &1418223781
 Transform:
   m_ObjectHideFlags: 0
