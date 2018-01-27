@@ -4300,7 +4300,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 6af6fd76c9430524ea1b6fa042746595, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4331,6 +4331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f715e021e59514ea5076b48fcb2cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redColorCounterThreshold: 10000
+  boxSize: 10
+  renderCam: 1
 --- !u!4 &1353541224
 Transform:
   m_ObjectHideFlags: 0
@@ -4338,8 +4341,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1353541220}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -6.69, y: 2.66, z: -0.18}
-  m_LocalScale: {x: 0.41871017, y: 0.41871017, z: 0.41871017}
+  m_LocalPosition: {x: -7.32, y: 4.41, z: -0.18}
+  m_LocalScale: {x: 0.11104744, y: 0.11104744, z: 0.11104744}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -4506,7 +4509,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 919626971
+  randomSeed: -700403611
   InitialModule:
     serializedVersion: 3
     enabled: 1

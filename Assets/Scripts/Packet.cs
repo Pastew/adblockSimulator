@@ -79,7 +79,6 @@ public class Packet : MonoBehaviour {
         transform.rotation = Quaternion.identity;
 
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        print(gameObject.name + " - " + sr.size.x);
         destinationPosition.x += col * sr.size.x;
         destinationPosition.y -= row * sr.size.y;
         //transform.position = destinationPosition;

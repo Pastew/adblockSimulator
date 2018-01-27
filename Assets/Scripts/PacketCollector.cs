@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PacketCollector : MonoBehaviour {
+public class PacketCollector : MonoBehaviour
+{
 
     private ParticleSystem redParticleSystem, greenParticleSystem;
     private PacketType curentPacketType = PacketType.Good;
@@ -27,9 +28,17 @@ public class PacketCollector : MonoBehaviour {
         packet.Assign(curentPacketType);
     }
 
-    public void Open() { SetColor(PacketType.Good); }
+    public void OpenCollector()
+    {
+        if (curentPacketType != PacketType.Good)
+            SetColor(PacketType.Good);
+    }
 
-    public void Close() { SetColor(PacketType.Bad); }
+    public void CloseCollector()
+    {
+        if (curentPacketType != PacketType.Bad)
+            SetColor(PacketType.Bad);
+    }
 
     private void SetColor(PacketType packetType)
     {
