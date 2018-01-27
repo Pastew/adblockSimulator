@@ -24,27 +24,31 @@ public class Packet : MonoBehaviour {
     {
 
         // Ale gunwo, popraw to.
-        if(state == PacketState.MoveToCorrectlyAssigned)
+        if(state == PacketState.MovingToDestination)
         {
-            gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 3f);
-            if (Vector2.Distance(transform.position, destinationPosition) < 0.01)
+            //gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 5f);
+            transform.position = Vector2.Lerp(transform.position, destinationPosition, Time.deltaTime * 1f);
+            
+            if (Vector2.Distance(transform.position, destinationPosition) < 0.1)
             {
-                print("DONE");
                 transform.position = destinationPosition;
                 state = PacketState.CorrectlyAssigned;
             }
         }
+    }
 
-        if (state == PacketState.MoveToIncorrectlyAssigned)
+    internal void Assign(PacketType assignedTo)
+    {
+        if(assignedTo == PacketType.Good)
         {
-            gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 3f);
-
-            if (Vector2.Distance(transform.position, destinationPosition) < 0.01)
-            {
-                transform.position = destinationPosition;
-                state = PacketState.IncorrectlyAssigned;
-            }
+            destinationPosition = GameObject.Find("GoodImageResult").transform.position;
         }
+        else if (assignedTo == PacketType.Bad)
+        {
+            destinationPosition = GameObject.Find("BadImageResult").transform.position;
+        }
+
+        SetupMoveToDestination();
     }
 
     public PacketState GetState()
@@ -67,23 +71,6 @@ public class Packet : MonoBehaviour {
         return packetType;
     }
 
-    internal void CorrectlyAssign()
-    {
-        state = PacketState.MoveToCorrectlyAssigned;
-        destinationPosition = GameObject.Find("CorrectImageResult").transform.position;
-        SetupMoveToDestination();
-        print("Success");
-    }
-
-    internal void IncorrectlyAssign()
-    {
-        state = PacketState.MoveToIncorrectlyAssigned;
-        destinationPosition = GameObject.Find("IncorrectImageResult").transform.position;
-
-        SetupMoveToDestination();
-        print("Fail");
-    }
-
     private void SetupMoveToDestination()
     {
         Destroy(GetComponent<Rigidbody2D>());
@@ -92,8 +79,11 @@ public class Packet : MonoBehaviour {
         transform.rotation = Quaternion.identity;
 
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        print(gameObject.name + " - " + sr.size.x);
         destinationPosition.x += col * sr.size.x;
         destinationPosition.y -= row * sr.size.y;
+        //transform.position = destinationPosition;
+        state = PacketState.MovingToDestination;
     }
 
     internal void SetType(PacketType type)

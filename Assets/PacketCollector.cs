@@ -24,10 +24,7 @@ public class PacketCollector : MonoBehaviour {
             return;
         }
 
-        if (curentPacketType == packet.GetPacketType())
-            packet.CorrectlyAssign();
-        else
-            packet.IncorrectlyAssign();
+        packet.Assign(curentPacketType);
     }
 
     public void Open() { SetColor(PacketType.Good); }

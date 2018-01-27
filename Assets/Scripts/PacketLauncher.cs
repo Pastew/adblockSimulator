@@ -17,6 +17,7 @@ public class PacketLauncher : MonoBehaviour
 
     internal void GeneratePacketGameObjectAndLaunch(Packet packet)
     {
+
         GameObject packetGameObject = generatePacketGameObject(packet);
         Vector2 force = packetGameObject.transform.up * launchForce;
         Rigidbody2D rigid = packetGameObject.GetComponent<Rigidbody2D>();
