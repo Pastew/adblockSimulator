@@ -11,8 +11,16 @@ public class PacketCollector : MonoBehaviour
 
     void Start()
     {
-        particleSystem = transform.Find("RedParticleSystem").GetComponent<ParticleSystem>();
+        particleSystem = transform.Find("ParticleSystem").GetComponent<ParticleSystem>();
+        Invoke("StartParticleSystem", 1f);
     }
+
+    void StartParticleSystem()
+    {
+        particleSystem.startColor = Color.white;
+        particleSystem.Play();
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
