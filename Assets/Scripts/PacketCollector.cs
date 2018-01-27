@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,6 +54,15 @@ public class PacketCollector : MonoBehaviour
             Color myColor = Color.gray;
             myColor.a = 0.4f;
             particleSystem.startColor = myColor;
+        }
+    }
+
+    internal void GoIntoBlue()
+    {
+        if (curentPacketType != PacketType.Blue)
+        {
+            curentPacketType = PacketType.Blue;
+            particleSystem.startColor = Color.blue;
         }
     }
 }
