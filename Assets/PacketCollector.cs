@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PacketCollector : MonoBehaviour {
 
-    private enum Colors { Red, Green };
     private ParticleSystem redParticleSystem, greenParticleSystem;
+    private int curentPacketType = PacketType.Good;
 
     void Start()
     {
@@ -13,23 +13,37 @@ public class PacketCollector : MonoBehaviour {
         greenParticleSystem = transform.Find("GreenParticleSystem").GetComponent<ParticleSystem>();
     }
 
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        Packet packet = collision.GetComponent<Packet>();
 
+        if (packet == null)
+        {
+            Debug.LogError("Packet collector collided with something else than Packet, " +
+                "that's weird, check this! Collided with" + collision.name);
+            return;
+        }
+
+        if (curentPacketType == packet.GetPacketType())
+            packet.CorrectlyAssign();
+        else
+            packet.IncorrectlyAssign();
     }
 
-    public void Open() { SetColor(Colors.Green); }
+    public void Open() { SetColor(PacketType.Good); }
 
-    public void Close() { SetColor(Colors.Red); }
+    public void Close() { SetColor(PacketType.Bad); }
 
-    private void SetColor(Colors color)
+    private void SetColor(int packetType)
     {
-        if (color == Colors.Red)
+        curentPacketType = packetType;
+
+        if (packetType == PacketType.Bad)
         {
             redParticleSystem.Play();
             greenParticleSystem.Stop();
         }
-        else
+        else if (packetType == PacketType.Good)
         {
             redParticleSystem.Stop();
             greenParticleSystem.Play();

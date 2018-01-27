@@ -19,7 +19,6 @@ public class PacketLauncher : MonoBehaviour
     {
         GameObject packetGameObject = generatePacketGameObject(packet);
         Vector2 force = packetGameObject.transform.up * launchForce;
-        print(force);
         Rigidbody2D rigid = packetGameObject.GetComponent<Rigidbody2D>();
         rigid.AddForce(force, ForceMode2D.Impulse);
 
@@ -34,9 +33,10 @@ public class PacketLauncher : MonoBehaviour
             flyingPacketsContainer.transform);
 
         Packet p = packetGameObject.GetComponent<Packet>();
-        p = packet;
         p.SetState(PacketState.Flying);
-
+        p.SetType(packet.GetPacketType());
+        p.col = packet.col;
+        p.row = packet.row;
         SpriteRenderer sr = packetGameObject.GetComponent<SpriteRenderer>();
         sr.sprite = packet.GetSprite();
         packetGameObject.name = sr.sprite.name;

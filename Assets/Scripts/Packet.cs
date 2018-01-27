@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Packet : MonoBehaviour {
-    private int col;
-    private int row;
+    public int col;
+    public int row;
     private Sprite sprite;
     private PacketState state;
+    private int packetType;
 
-    public Packet(int col, int row, Sprite sprite)
+    public Packet(int col, int row, Sprite sprite, int packetType)
     {
+        this.packetType = packetType;
         this.col = col;
         this.row = row;
         this.sprite = sprite;
@@ -30,5 +32,28 @@ public class Packet : MonoBehaviour {
     internal void SetState(PacketState newState)
     {
         state = newState;
+    }
+
+    internal int GetPacketType()
+    {
+        return packetType;
+    }
+
+    internal void CorrectlyAssign()
+    {
+        state = PacketState.CorrectlyAssigned;
+        print("success");
+
+    }
+
+    internal void IncorrectlyAssign()
+    {
+        state = PacketState.IncorrectlyAssigned;
+        print("Fail");
+    }
+
+    internal void SetType(int type)
+    {
+        this.packetType = type;
     }
 }
