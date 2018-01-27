@@ -12,12 +12,19 @@ public class RoundManager : MonoBehaviour
 
     private SplittedImage goodSplittedImage, badSplittedImage;
     private PacketLauncher[] packetLaunchers;
+    private Countdown countdown;
 
     void Start()
     {
         goodSplittedImage = new SplittedImage(goodImage, PacketType.Good);
         badSplittedImage = new SplittedImage(badImage, PacketType.Bad);
         packetLaunchers = FindObjectsOfType<PacketLauncher>();
+        countdown = FindObjectOfType<Countdown>();
+        countdown.StartCountdown();
+    } 
+
+    public void StartNextRound()
+    {
         InvokeRepeating("LaunchNewPacket", 1, 1.5f);
     }
 
