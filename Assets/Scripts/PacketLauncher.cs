@@ -8,6 +8,8 @@ public class PacketLauncher : MonoBehaviour
     public GameObject packetPrefab;
     public float launchForce = 10f;
 
+    private Animator animator;
+
     private FlyingPacketsContainer flyingPacketsContainer;
 
     private void Start()
@@ -17,13 +19,15 @@ public class PacketLauncher : MonoBehaviour
 
     internal void GeneratePacketGameObjectAndLaunch(Packet packet)
     {
-
+        animator = GetComponentInChildren<Animator>();
         GameObject packetGameObject = generatePacketGameObject(packet);
         Vector2 force = packetGameObject.transform.up * launchForce;
         Rigidbody2D rigid = packetGameObject.GetComponent<Rigidbody2D>();
         rigid.AddForce(force, ForceMode2D.Impulse);
 
         rigid.AddTorque(UnityEngine.Random.Range(-200, 200));
+        animator.SetTrigger("LaunchTrigger");
+        print("Should set trigger");
     }
 
     private GameObject generatePacketGameObject(Packet packet)
@@ -45,22 +49,4 @@ public class PacketLauncher : MonoBehaviour
         return packetGameObject;
     }
 
-    private GameObject generatePacketGameObjectInCode(Packet packet)
-    {
-        GameObject packetGameObject = new GameObject();
-        Packet p = packetGameObject.AddComponent<Packet>();
-        p = packet;
-        p.SetState(PacketState.Flying);
-        packetGameObject.transform.position = transform.position;
-        packetGameObject.transform.rotation = transform.rotation;
-        packetGameObject.transform.parent = flyingPacketsContainer.transform;
-
-        SpriteRenderer packetSpriteRenderer = packetGameObject.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-        packetSpriteRenderer.sprite = packet.GetSprite();
-        packetGameObject.name = packetSpriteRenderer.sprite.name;
-
-        packetGameObject.AddComponent(typeof(Rigidbody2D));
-        packetGameObject.AddComponent(typeof(BoxCollider2D));
-        return packetGameObject;
-    }
 }
