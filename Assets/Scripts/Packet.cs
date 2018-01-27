@@ -10,6 +10,9 @@ public class Packet : MonoBehaviour
     private Sprite sprite;
     private PacketState state;
     private PacketType packetType;
+    private float xSpeed;
+    private float rotationSpeed;
+
     private Vector2 destinationPosition;
     private SplittedImage parentSplittedImage;
 
@@ -25,8 +28,14 @@ public class Packet : MonoBehaviour
 
     private void Update()
     {
-        print(state);
         // Ale gunwo, popraw to.
+
+        if (state == PacketState.Flying)
+        {
+            transform.Translate(Vector3.right * xSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.forward * rotationSpeed);
+        }
+
         if (state == PacketState.MovingToDestination)
         {
             //gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 5f);
@@ -38,6 +47,13 @@ public class Packet : MonoBehaviour
                 state = PacketState.CorrectlyAssigned;
             }
         }
+    }
+
+    internal void Launch(float xSpeed, float rotationSpeed)
+    {
+        state = PacketState.Flying;
+        this.xSpeed = xSpeed;
+        this.rotationSpeed = rotationSpeed;
     }
 
     internal void Assign(PacketType assignedTo)

@@ -5,18 +5,13 @@ using UnityEngine;
 
 public class PacketLauncher : MonoBehaviour
 {
-    public float launchForce = 10f;
-
-    private Animator animator;
+    public float xSpeed = 5;
+    public float rotateMax = 5;
 
     internal void Launch(GameObject packet)
     {
-        animator = GetComponentInChildren<Animator>();
-        Vector2 force = packet.transform.up * launchForce;
-        Rigidbody2D rigid = packet.GetComponent<Rigidbody2D>();
-        rigid.AddForce(force, ForceMode2D.Impulse);
-
-        rigid.AddTorque(UnityEngine.Random.Range(-200, 200));
-        animator.SetTrigger("LaunchTrigger");
+        packet.GetComponent<Packet>().Launch(
+            xSpeed, 
+            rotateMax * UnityEngine.Random.Range(-1f, 1f));
     }
 }

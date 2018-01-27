@@ -46,7 +46,7 @@ public class SplittedImage : MonoBehaviour {
 
     private GameObject generatePacketGameObject(int col, int row, Sprite sprite, PacketType packet)
     {
-        Transform parent = GameObject.FindObjectOfType<PacketLauncher>().transform;
+        Transform parent = FindObjectOfType<PacketLauncher>().transform;
         GameObject packetGameObject = Instantiate(packetPrefab,
             parent.position,
             parent.rotation,
