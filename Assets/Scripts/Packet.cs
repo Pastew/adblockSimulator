@@ -27,7 +27,7 @@ public class Packet : MonoBehaviour {
         if(state == PacketState.MovingToDestination)
         {
             //gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 5f);
-            transform.position = Vector2.Lerp(transform.position, destinationPosition, Time.deltaTime * 1f);
+            transform.position = Vector2.Lerp(transform.position, destinationPosition, Time.deltaTime * 4f);
             
             if (Vector2.Distance(transform.position, destinationPosition) < 0.1)
             {
@@ -48,7 +48,7 @@ public class Packet : MonoBehaviour {
             destinationPosition = GameObject.Find("BadImageResult").transform.position;
         }
 
-        SetupMoveToDestination();
+        Invoke("SetupMoveToDestination", 0.5f);
     }
 
     public PacketState GetState()

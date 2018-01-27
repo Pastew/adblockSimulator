@@ -23,6 +23,12 @@ public class RoundManager : MonoBehaviour
 
     public void LaunchNewPacket()
     {
+        if (goodSplittedImage.GetUnusedPacketsLeft() + badSplittedImage.GetUnusedPacketsLeft() == 0)
+        {
+            CancelInvoke("LaunchNewPacket");
+            return;
+        }
+
         PacketLauncher randomPacketLauncher = packetLaunchers[UnityEngine.Random.Range(0, packetLaunchers.Length)];
         randomPacketLauncher.GeneratePacketGameObjectAndLaunch(getNextRandomPacketFromRandomImage());
     }
