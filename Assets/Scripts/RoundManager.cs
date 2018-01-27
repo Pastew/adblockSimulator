@@ -46,7 +46,8 @@ public class RoundManager : MonoBehaviour
     {
         CancelInvoke("LaunchNewPacket");
         currentRound++;
-        countdown.StartCountdown();
+        if(currentRound < badImages.Length)
+            countdown.StartCountdown();
     }
 
     private Packet getNextRandomPacketFromRandomImage()
