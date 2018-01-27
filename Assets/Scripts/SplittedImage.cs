@@ -26,8 +26,8 @@ public class SplittedImage : MonoBehaviour {
 
         packetStack = new Stack<Packet>();
         int i = 0;
-        for (int col = 0; col < columns; ++col)
-            for (int row = 0; row < rows; ++row)
+        for (int row = 0; row < rows; ++row)
+            for (int col = 0; col < columns; ++col)
                 packetStack.Push(new Packet(col, row, imageSprites[i++], packetType));
 
         Utils.Shuffle(packetStack);

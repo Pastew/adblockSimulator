@@ -70,22 +70,30 @@ public class Packet : MonoBehaviour {
     internal void CorrectlyAssign()
     {
         state = PacketState.MoveToCorrectlyAssigned;
+        destinationPosition = GameObject.Find("CorrectImageResult").transform.position;
         SetupMoveToDestination();
+        print("Success");
     }
 
     internal void IncorrectlyAssign()
     {
         state = PacketState.MoveToIncorrectlyAssigned;
+        destinationPosition = GameObject.Find("IncorrectImageResult").transform.position;
+
         SetupMoveToDestination();
+        print("Fail");
     }
 
     private void SetupMoveToDestination()
     {
-        destinationPosition = new Vector2(100, 3000);
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponent<BoxCollider2D>());
         Destroy(GetComponent<TrailRenderer>());
         transform.rotation = Quaternion.identity;
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        destinationPosition.x += col * sr.size.x;
+        destinationPosition.y -= row * sr.size.y;
     }
 
     internal void SetType(PacketType type)
