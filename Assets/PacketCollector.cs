@@ -5,7 +5,7 @@ using UnityEngine;
 public class PacketCollector : MonoBehaviour {
 
     private ParticleSystem redParticleSystem, greenParticleSystem;
-    private int curentPacketType = PacketType.Good;
+    private PacketType curentPacketType = PacketType.Good;
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class PacketCollector : MonoBehaviour {
 
     public void Close() { SetColor(PacketType.Bad); }
 
-    private void SetColor(int packetType)
+    private void SetColor(PacketType packetType)
     {
         curentPacketType = packetType;
 

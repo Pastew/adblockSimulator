@@ -18,7 +18,7 @@ public class SplittedImage : MonoBehaviour {
     private int columns;
     private int rows;
 
-    public SplittedImage(Texture2D texture, int packetType)
+    public SplittedImage(Texture2D texture, PacketType packetType)
     {
         Sprite[] imageSprites = Resources.LoadAll<Sprite>(texture.name);
         columns = lengthToColumsDict[imageSprites.Length];

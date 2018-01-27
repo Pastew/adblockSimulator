@@ -8,9 +8,9 @@ public class Packet : MonoBehaviour {
     public int row;
     private Sprite sprite;
     private PacketState state;
-    private int packetType;
+    private PacketType packetType;
 
-    public Packet(int col, int row, Sprite sprite, int packetType)
+    public Packet(int col, int row, Sprite sprite, PacketType packetType)
     {
         this.packetType = packetType;
         this.col = col;
@@ -34,7 +34,7 @@ public class Packet : MonoBehaviour {
         state = newState;
     }
 
-    internal int GetPacketType()
+    internal PacketType GetPacketType()
     {
         return packetType;
     }
@@ -52,7 +52,7 @@ public class Packet : MonoBehaviour {
         print("Fail");
     }
 
-    internal void SetType(int type)
+    internal void SetType(PacketType type)
     {
         this.packetType = type;
     }
