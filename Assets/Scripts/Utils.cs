@@ -6,12 +6,12 @@ using System.Linq;
 public static class Utils
 {
     // Source: https://stackoverflow.com/questions/33643104/shuffling-a-stackt
-    public static void Shuffle<T>(this Stack<T> stack)
+    public static void Shuffle<T>(this Queue<T> queue)
     {
-        var values = stack.ToArray();
-        stack.Clear();
+        var values = queue.ToArray();
+        queue.Clear();
         Random rnd = new Random();
         foreach (var value in values.OrderBy(x => rnd.Next()))
-            stack.Push(value);
+            queue.Enqueue(value);
     }
 }

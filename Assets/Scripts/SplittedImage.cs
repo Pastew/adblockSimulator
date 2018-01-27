@@ -14,7 +14,7 @@ public class SplittedImage : MonoBehaviour {
         {30, 6 }
     };
 
-    private Stack<Packet> packetStack;
+    private Queue<Packet> packetStack;
     private int columns;
     private int rows;
 
@@ -24,11 +24,11 @@ public class SplittedImage : MonoBehaviour {
         columns = lengthToColumsDict[imageSprites.Length];
         rows = columns - 1;
 
-        packetStack = new Stack<Packet>();
+        packetStack = new Queue<Packet>();
         int i = 0;
         for (int row = 0; row < rows; ++row)
             for (int col = 0; col < columns; ++col)
-                packetStack.Push(new Packet(col, row, imageSprites[i++], packetType));
+                packetStack.Enqueue(new Packet(col, row, imageSprites[i++], packetType));
 
         Utils.Shuffle(packetStack);
     }
@@ -41,7 +41,7 @@ public class SplittedImage : MonoBehaviour {
             return null;
         }
 
-        return packetStack.Pop();
+        return packetStack.Dequeue();
     }
 
     internal int GetUnusedPacketsLeft()
