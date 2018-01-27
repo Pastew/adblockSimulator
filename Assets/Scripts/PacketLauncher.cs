@@ -27,7 +27,6 @@ public class PacketLauncher : MonoBehaviour
 
         rigid.AddTorque(UnityEngine.Random.Range(-200, 200));
         animator.SetTrigger("LaunchTrigger");
-        print("Should set trigger");
     }
 
     private GameObject generatePacketGameObject(Packet packet)
