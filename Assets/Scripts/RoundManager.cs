@@ -5,21 +5,19 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    [SerializeField]
-    private Texture2D goodImage;
-    [SerializeField]
-    private Texture2D badImage;
+    public Texture2D[] goodImages;
+    public Texture2D[] badImages;
 
     private SplittedImage goodSplittedImage, badSplittedImage;
     private PacketLauncher[] packetLaunchers;
     private Countdown countdown;
 
-    public float timeBetweenLaunches = 0.5f;
+    public float[] timeBetweenLaunches;
+
+    public int currentRound = 0;
 
     void Start()
     {
-        goodSplittedImage = new SplittedImage(goodImage, PacketType.Good);
-        badSplittedImage = new SplittedImage(badImage, PacketType.Bad);
         packetLaunchers = FindObjectsOfType<PacketLauncher>();
         countdown = FindObjectOfType<Countdown>();
         countdown.StartCountdown();
@@ -27,19 +25,28 @@ public class RoundManager : MonoBehaviour
 
     public void StartNextRound()
     {
-        InvokeRepeating("LaunchNewPacket", timeBetweenLaunches, timeBetweenLaunches);
+        goodSplittedImage = new SplittedImage(goodImages[currentRound], PacketType.Good);
+        badSplittedImage = new SplittedImage(badImages[currentRound], PacketType.Bad);
+        InvokeRepeating("LaunchNewPacket", timeBetweenLaunches[currentRound], timeBetweenLaunches[currentRound]);
     }
 
     public void LaunchNewPacket()
     {
         if (goodSplittedImage.GetUnusedPacketsLeft() + badSplittedImage.GetUnusedPacketsLeft() == 0)
         {
-            CancelInvoke("LaunchNewPacket");
+            FinishRound();
             return;
         }
 
         PacketLauncher randomPacketLauncher = packetLaunchers[UnityEngine.Random.Range(0, packetLaunchers.Length)];
         randomPacketLauncher.GeneratePacketGameObjectAndLaunch(getNextRandomPacketFromRandomImage());
+    }
+
+    private void FinishRound()
+    {
+        CancelInvoke("LaunchNewPacket");
+        currentRound++;
+        countdown.StartCountdown();
     }
 
     private Packet getNextRandomPacketFromRandomImage()
