@@ -14,6 +14,8 @@ public class RoundManager : MonoBehaviour
     private PacketLauncher[] packetLaunchers;
     private Countdown countdown;
 
+    public float timeBetweenLaunches = 0.5f;
+
     void Start()
     {
         goodSplittedImage = new SplittedImage(goodImage, PacketType.Good);
@@ -25,7 +27,7 @@ public class RoundManager : MonoBehaviour
 
     public void StartNextRound()
     {
-        InvokeRepeating("LaunchNewPacket", 1, 1.5f);
+        InvokeRepeating("LaunchNewPacket", timeBetweenLaunches, timeBetweenLaunches);
     }
 
     public void LaunchNewPacket()
