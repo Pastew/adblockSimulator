@@ -4421,16 +4421,16 @@ MonoBehaviour:
     type: 2}
   goodImages:
   - {fileID: 2800000, guid: d2ee84ddaa2bf734b898a6b14017fa56, type: 3}
-  - {fileID: 2800000, guid: d2ee84ddaa2bf734b898a6b14017fa56, type: 3}
   - {fileID: 2800000, guid: 622ac5dc57a579e4f9b60d50640bbc46, type: 3}
+  - {fileID: 2800000, guid: 7f0995e82e52c2d46bf20a5033be9ecd, type: 3}
   badImages:
   - {fileID: 2800000, guid: ab83a59a35fd3e1429aab62b5afcc8f7, type: 3}
-  - {fileID: 2800000, guid: ab83a59a35fd3e1429aab62b5afcc8f7, type: 3}
+  - {fileID: 2800000, guid: d86b37e9a69c6de42ad679da1abcd72b, type: 3}
   - {fileID: 2800000, guid: d7132a4851196e64ea3187954a364461, type: 3}
   timeBetweenLaunches:
   - 0.2
-  - 2
-  - 1.5
+  - 0.1
+  - 0.1
   currentRound: 0
 --- !u!4 &1418223781
 Transform:
