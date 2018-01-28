@@ -4092,7 +4092,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1208300351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1875106041}
@@ -4301,7 +4301,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: ab83a59a35fd3e1429aab62b5afcc8f7, type: 3}
   - {fileID: 2800000, guid: ab83a59a35fd3e1429aab62b5afcc8f7, type: 3}
   timeBetweenLaunches:
-  - 3
+  - 0.2
   - 2
   - 1.5
   currentRound: 0

@@ -27,12 +27,22 @@ public class PacketCollector : MonoBehaviour
     {
         print("Triggered");
         Packet packet = collision.GetComponent<Packet>();
+        if (packet.GetState() != PacketState.Flying)
+            return;
 
+        PacketType packetType = packet.GetPacketType();
+        
         // user destroys packet
         if (currentPacketType == PacketType.Bad)
         {
             Instantiate(boomPrefab, packet.transform.position, Quaternion.identity).transform.parent = transform;
             Destroy(packet.gameObject);
+        }
+
+        // user collects good packet
+        if(currentPacketType == PacketType.Good && packetType == PacketType.Good)
+        {
+            packet.OnCorrectlyCollected();
         }
     }
 
