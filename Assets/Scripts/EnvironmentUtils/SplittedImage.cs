@@ -109,6 +109,7 @@ public class SplittedImage : MonoBehaviour
         packet.GetComponent<Packet>().xSpeed = 0;
         packet.GetComponent<Packet>().SetState(PacketState.ReadyToLaunch);
         packetQueue.Enqueue(packet);
+        Utils.Shuffle(packetQueue);
     }
 
     public void RewindPacketIfCollectedOnPosition(int col, int row)
