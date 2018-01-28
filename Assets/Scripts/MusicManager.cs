@@ -5,12 +5,12 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	void Awake () {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }
