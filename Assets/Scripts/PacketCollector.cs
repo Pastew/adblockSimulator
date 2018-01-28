@@ -8,6 +8,7 @@ public class PacketCollector : MonoBehaviour
 
     private ParticleSystem particleSystem;
     private PacketType currentPacketType = PacketType.None;
+    public bool activeTrigger;
 
     void Start()
     {
@@ -23,25 +24,19 @@ public class PacketCollector : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
         print("Triggered");
         Packet packet = collision.GetComponent<Packet>();
 
-        if (packet == null)
-        {
-            Debug.LogError("Packet collector collided with something else than Packet, " +
-                "that's weird, check this! Collided with" + collision.name);
-            return;
-        }
-
-        // Packet is bad and user destroys it
-        if(packet.GetPacketType() == currentPacketType && currentPacketType == PacketType.Bad)
+        // user destroys packet
+        if (currentPacketType == PacketType.Bad)
         {
             Destroy(packet.gameObject);
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        activeTrigger = false;
     }
 
     public void CollectPackets()
