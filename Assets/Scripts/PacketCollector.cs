@@ -7,7 +7,7 @@ public class PacketCollector : MonoBehaviour
 {
 
     private ParticleSystem particleSystem;
-    private PacketType curentPacketType = PacketType.None;
+    private PacketType currentPacketType = PacketType.None;
 
     void Start()
     {
@@ -21,9 +21,13 @@ public class PacketCollector : MonoBehaviour
         particleSystem.Play();
     }
 
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        print("Triggered");
         Packet packet = collision.GetComponent<Packet>();
 
         if (packet == null)
@@ -33,32 +37,36 @@ public class PacketCollector : MonoBehaviour
             return;
         }
 
-        packet.Assign(curentPacketType);
+        // Packet is bad and user destroys it
+        if(packet.GetPacketType() == currentPacketType && currentPacketType == PacketType.Bad)
+        {
+            Destroy(packet.gameObject);
+        }
     }
 
     public void CollectPackets()
     {
-        if (curentPacketType != PacketType.Good)
+        if (currentPacketType != PacketType.Good)
         {
-            curentPacketType = PacketType.Good;
+            currentPacketType = PacketType.Good;
             particleSystem.startColor = Color.green;
         }
     }
 
     public void DestroyPackets()
     {
-        if (curentPacketType != PacketType.Bad)
+        if (currentPacketType != PacketType.Bad)
         {
-            curentPacketType = PacketType.Bad;
+            currentPacketType = PacketType.Bad;
             particleSystem.startColor = Color.red;
         }
     }
 
     public void TurnOff()
     {
-        if (curentPacketType != PacketType.None)
+        if (currentPacketType != PacketType.None)
         {
-            curentPacketType = PacketType.None;
+            currentPacketType = PacketType.None;
             Color myColor = Color.gray;
             myColor.a = 0.4f;
             particleSystem.startColor = myColor;
@@ -67,9 +75,9 @@ public class PacketCollector : MonoBehaviour
 
     internal void GoIntoBlue()
     {
-        if (curentPacketType != PacketType.Blue)
+        if (currentPacketType != PacketType.Blue)
         {
-            curentPacketType = PacketType.Blue;
+            currentPacketType = PacketType.Blue;
             particleSystem.startColor = Color.blue;
         }
     }
