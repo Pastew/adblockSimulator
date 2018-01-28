@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 612323517}
   - component: {fileID: 612323516}
   m_Layer: 0
-  m_Name: MusicManager
+  m_Name: BackgroundMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,7 +442,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 629fc09ee0b3e0946bc8c1721935a5c0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.83
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4553,8 +4553,8 @@ MonoBehaviour:
   - {fileID: 2800000, guid: bca07648688ec894cb0b9748c3a5ab9d, type: 3}
   - {fileID: 2800000, guid: 28c4bc8a436fa764095a1c860af1dee0, type: 3}
   timeBetweenLaunches:
-  - 3
-  - 3
+  - 1
+  - 1
   - 2
   - 2
   - 1.5
