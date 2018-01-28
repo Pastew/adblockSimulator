@@ -58,9 +58,12 @@ public class RoundManager : MonoBehaviour
     {
         CancelInvoke("LaunchNextPacket");
         currentRound++;
+        badSplittedImage.Die();
+        goodSplittedImage.Die();
         if(currentRound < badImages.Length)
             countdown.StartCountdown();
     }
+
 
     private GameObject GetNextRandomPacketFromRandomImage()
     {

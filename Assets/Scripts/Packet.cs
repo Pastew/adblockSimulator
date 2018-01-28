@@ -12,6 +12,7 @@ public class Packet : MonoBehaviour
     private PacketType packetType;
     public float xSpeed;
     private float rotationSpeed;
+    public GameObject boomPrefab;
 
     private Vector2 destinationPosition;
     private SplittedImage parentSplittedImage;
@@ -98,6 +99,13 @@ public class Packet : MonoBehaviour
     public void GoBackToLauncher()
     {
         parentSplittedImage.Enqueue(this.gameObject);
+    }
+
+    public void Die()
+    {
+        Color color = (packetType == PacketType.Good) ? Color.green : Color.red;
+        Instantiate(boomPrefab, transform.position, Quaternion.identity, FindObjectOfType<BoomContainer>().transform).GetComponent<ParticleSystem>().startColor = color;
+        Destroy(gameObject);
     }
 }
 

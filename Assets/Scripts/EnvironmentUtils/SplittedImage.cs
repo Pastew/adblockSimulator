@@ -73,6 +73,15 @@ public class SplittedImage : MonoBehaviour {
         return packetQueue.Dequeue();
     }
 
+    internal void Die()
+    {
+        foreach(GameObject p in packetList)
+        {
+            p.GetComponent<Packet>().Die();
+        }
+        Destroy(gameObject);
+    }
+
     internal bool AllPacketsCollected()
     {
         foreach(GameObject packet in packetList)
