@@ -25,6 +25,10 @@ public class Countdown : MonoBehaviour {
         {
             CancelInvoke();
             FindObjectOfType<RoundManager>().StartNextRound();
+            AudioSource music = FindObjectOfType<MusicManager>().GetComponent<AudioSource>();
+            if(!music.isPlaying)
+                music.Play();
+
             sr.sprite = null;   
             return;
         }

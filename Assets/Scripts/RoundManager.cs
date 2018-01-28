@@ -15,6 +15,7 @@ public class RoundManager : MonoBehaviour
     private Countdown countdown;
 
     public float[] timeBetweenLaunches;
+    public float[] packetSpeed;
 
     public int currentRound = 0;
 
@@ -39,6 +40,9 @@ public class RoundManager : MonoBehaviour
         badSplittedImage.gameObject.transform.parent = transform;
         badSplittedImage.GetComponent<SplittedImage>().packetPrefab = packetPrefab;
         badSplittedImage.Init(badImages[currentRound], PacketType.Bad);
+
+        foreach (PacketLauncher p in packetLaunchers)
+            p.xSpeed = packetSpeed[currentRound];
 
         InvokeRepeating("LaunchNextPacket", timeBetweenLaunches[currentRound], timeBetweenLaunches[currentRound]);
     }
