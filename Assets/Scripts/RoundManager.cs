@@ -29,11 +29,13 @@ public class RoundManager : MonoBehaviour
     {
         // Gunwo, popraw kiedyś.
         goodSplittedImage = new GameObject().AddComponent<SplittedImage>();
+        goodSplittedImage.name = "goodSplittedImage";
         goodSplittedImage.gameObject.transform.parent = transform;
         goodSplittedImage.GetComponent<SplittedImage>().packetPrefab = packetPrefab;
         goodSplittedImage.Init(goodImages[currentRound], PacketType.Good);
 
         badSplittedImage = new GameObject().AddComponent<SplittedImage>();
+        badSplittedImage.name = "badSplittedImage";
         badSplittedImage.gameObject.transform.parent = transform;
         badSplittedImage.GetComponent<SplittedImage>().packetPrefab = packetPrefab;
         badSplittedImage.Init(badImages[currentRound], PacketType.Bad);
@@ -52,6 +54,12 @@ public class RoundManager : MonoBehaviour
 
         PacketLauncher randomPacketLauncher = packetLaunchers[UnityEngine.Random.Range(0, packetLaunchers.Length)];
         randomPacketLauncher.Launch(GetNextRandomPacketFromRandomImage());
+    }
+
+    internal void RewindPacketIfCollectedOnPosition(int col, int row)
+    {
+        goodSplittedImage.RewindPacketIfCollectedOnPosition(col, row);
+        badSplittedImage.RewindPacketIfCollectedOnPosition(col, row);
     }
 
     private void FinishRound()

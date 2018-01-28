@@ -38,7 +38,7 @@ public class Packet : MonoBehaviour
             transform.Rotate(Vector3.forward * rotationSpeed);
         }
 
-        if (state == PacketState.MovingToDestination)
+        if (state == PacketState.MovingToCollectedDestination)
         {
             //gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 5f);
             transform.position = Vector2.Lerp(transform.position, destinationPosition, Time.deltaTime * 4f);
@@ -46,15 +46,17 @@ public class Packet : MonoBehaviour
 
             if (Vector2.Distance(transform.position, destinationPosition) < 0.1)
             {
+                print("reached destination " + name);
                 transform.position = destinationPosition;
+                FindObjectOfType<RoundManager>().RewindPacketIfCollectedOnPosition(col, row);
                 state = PacketState.Collected;
             }
         }
     }
 
-    internal void OnCorrectlyCollected()
+    internal void OnCollected()
     {
-        state = PacketState.MovingToDestination;
+        state = PacketState.MovingToCollectedDestination;
         destinationPosition = GameObject.Find("GoodImageResult").transform.position;
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         float w = sr.sprite.bounds.size.x;

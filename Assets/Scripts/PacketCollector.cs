@@ -30,7 +30,7 @@ public class PacketCollector : MonoBehaviour
             return;
 
         PacketType packetType = packet.GetPacketType();
-        
+
         // user destroys packet
         if (currentPacketType == PacketType.Bad)
         {
@@ -39,10 +39,10 @@ public class PacketCollector : MonoBehaviour
             packet.GoBackToLauncher();
         }
 
-        // user collects good packet
-        if(currentPacketType == PacketType.Good && packetType == PacketType.Good)
+        // user collects any packet
+        if (currentPacketType == PacketType.Good)
         {
-            packet.OnCorrectlyCollected();
+            packet.OnCollected();
         }
     }
 

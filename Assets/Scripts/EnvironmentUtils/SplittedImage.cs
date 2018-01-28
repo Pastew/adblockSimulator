@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SplittedImage : MonoBehaviour {
+public class SplittedImage : MonoBehaviour
+{
 
     private FlyingPacketsContainer flyingPacketsContainer;
     private PacketLauncher packetLauncher;
@@ -64,7 +65,7 @@ public class SplittedImage : MonoBehaviour {
 
     internal GameObject GetNextPacket()
     {
-        if(packetQueue.Count == 0)
+        if (packetQueue.Count == 0)
         {
             Debug.LogError("There is no packet left! This should NEVER happen. Fix this!");
             return null;
@@ -75,7 +76,7 @@ public class SplittedImage : MonoBehaviour {
 
     internal void Die()
     {
-        foreach(GameObject p in packetList)
+        foreach (GameObject p in packetList)
         {
             p.GetComponent<Packet>().Die();
         }
@@ -84,7 +85,7 @@ public class SplittedImage : MonoBehaviour {
 
     internal bool AllPacketsCollected()
     {
-        foreach(GameObject packet in packetList)
+        foreach (GameObject packet in packetList)
         {
             if (packet.GetComponent<Packet>().GetState() != PacketState.Collected)
                 return false;
@@ -108,5 +109,22 @@ public class SplittedImage : MonoBehaviour {
         packet.GetComponent<Packet>().xSpeed = 0;
         packet.GetComponent<Packet>().SetState(PacketState.ReadyToLaunch);
         packetQueue.Enqueue(packet);
+    }
+
+    public void RewindPacketIfCollectedOnPosition(int col, int row)
+    {
+        print("entered rewind fun");
+        foreach (GameObject packetGO in packetList)
+        {
+            Packet p = packetGO.GetComponent<Packet>();
+            if (p.GetState() != PacketState.Collected)
+                continue;
+
+            if (p.col == col && p.row == row)
+            {
+                p.GoBackToLauncher();
+                print("Rewinding " + p.name);
+            }
+        }
     }
 }
