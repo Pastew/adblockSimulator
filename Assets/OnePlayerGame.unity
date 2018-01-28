@@ -4420,15 +4420,21 @@ MonoBehaviour:
   packetPrefab: {fileID: 1983684368091566, guid: 0d2a6ff79671c944e908b23937131113,
     type: 2}
   goodImages:
-  - {fileID: 2800000, guid: d2ee84ddaa2bf734b898a6b14017fa56, type: 3}
-  - {fileID: 2800000, guid: 622ac5dc57a579e4f9b60d50640bbc46, type: 3}
-  - {fileID: 2800000, guid: 7f0995e82e52c2d46bf20a5033be9ecd, type: 3}
+  - {fileID: 2800000, guid: 6952d97af5b698c49a3ab0ce0dec38b2, type: 3}
+  - {fileID: 2800000, guid: 78d5b59c4a24eda4a852ce4f916e1f43, type: 3}
+  - {fileID: 2800000, guid: c6c7322f6ad419f4595d694e1327aaa5, type: 3}
+  - {fileID: 2800000, guid: 9785b457973d3e7439661106e5e53565, type: 3}
+  - {fileID: 2800000, guid: c929ed81bf262904f84e9b4281ebe68d, type: 3}
   badImages:
-  - {fileID: 2800000, guid: ab83a59a35fd3e1429aab62b5afcc8f7, type: 3}
-  - {fileID: 2800000, guid: d86b37e9a69c6de42ad679da1abcd72b, type: 3}
-  - {fileID: 2800000, guid: d7132a4851196e64ea3187954a364461, type: 3}
+  - {fileID: 2800000, guid: efdf9dcf1b4d4414294bfd1d93524759, type: 3}
+  - {fileID: 2800000, guid: 3037156e79931b2468c1f8b047b7bffd, type: 3}
+  - {fileID: 2800000, guid: 61d748f60af7bc143967d35ad430e03e, type: 3}
+  - {fileID: 2800000, guid: bca07648688ec894cb0b9748c3a5ab9d, type: 3}
+  - {fileID: 2800000, guid: 28c4bc8a436fa764095a1c860af1dee0, type: 3}
   timeBetweenLaunches:
-  - 0.2
+  - 0.1
+  - 0.1
+  - 0.1
   - 0.1
   - 0.1
   currentRound: 0
