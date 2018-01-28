@@ -1,1 +1,1 @@
-﻿public enum PacketState { NotLaunchedYet, CorrectlyAssigned, MoveToIncorrectlyAssigned, Flying, MoveToCorrectlyAssigned, IncorrectlyAssigned, MovingToDestination };
+﻿public enum PacketState { ReadyToLaunch, Collected, MoveToIncorrectlyAssigned, Flying, MoveToCorrectlyAssigned, IncorrectlyAssigned, MovingToDestination };

@@ -43,14 +43,15 @@ public class RoundManager : MonoBehaviour
 
     public void LaunchNextPacket()
     {
-        if (goodSplittedImage.GetUnusedPacketsLeft() + badSplittedImage.GetUnusedPacketsLeft() == 0)
+        if (goodSplittedImage.AllPacketsCollected())
         {
+            print("Finish round");
             FinishRound();
             return;
         }
 
         PacketLauncher randomPacketLauncher = packetLaunchers[UnityEngine.Random.Range(0, packetLaunchers.Length)];
-        randomPacketLauncher.Launch(getNextRandomPacketFromRandomImage());
+        randomPacketLauncher.Launch(GetNextRandomPacketFromRandomImage());
     }
 
     private void FinishRound()
@@ -61,18 +62,15 @@ public class RoundManager : MonoBehaviour
             countdown.StartCountdown();
     }
 
-    private GameObject getNextRandomPacketFromRandomImage()
+    private GameObject GetNextRandomPacketFromRandomImage()
     {
-        if (goodSplittedImage.GetUnusedPacketsLeft() + badSplittedImage.GetUnusedPacketsLeft() == 0)
-        {
-            Debug.LogError("No parts left to shoot. This should NEVER happen. Fix it");
+        if (goodSplittedImage.NoPackageToLaunch() && badSplittedImage.NoPackageToLaunch())
             return null;
-        }
 
-        if (goodSplittedImage.GetUnusedPacketsLeft() == 0)
+        if (goodSplittedImage.NoPackageToLaunch())
             return badSplittedImage.GetNextPacket();
 
-        if (badSplittedImage.GetUnusedPacketsLeft() == 0)
+        if (badSplittedImage.NoPackageToLaunch())
             return goodSplittedImage.GetNextPacket();
 
         if (UnityEngine.Random.value > 0.5f)

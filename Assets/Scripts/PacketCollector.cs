@@ -25,7 +25,6 @@ public class PacketCollector : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        print("Triggered");
         Packet packet = collision.GetComponent<Packet>();
         if (packet.GetState() != PacketState.Flying)
             return;
@@ -36,7 +35,8 @@ public class PacketCollector : MonoBehaviour
         if (currentPacketType == PacketType.Bad)
         {
             Instantiate(boomPrefab, packet.transform.position, Quaternion.identity).transform.parent = transform;
-            Destroy(packet.gameObject);
+            //Destroy(packet.gameObject);
+            packet.GoBackToLauncher();
         }
 
         // user collects good packet

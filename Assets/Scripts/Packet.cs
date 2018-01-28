@@ -10,7 +10,7 @@ public class Packet : MonoBehaviour
     private Sprite sprite;
     private PacketState state;
     private PacketType packetType;
-    private float xSpeed;
+    public float xSpeed;
     private float rotationSpeed;
 
     private Vector2 destinationPosition;
@@ -22,8 +22,9 @@ public class Packet : MonoBehaviour
         this.packetType = packetType;
         this.col = col;
         this.row = row;
-        this.sprite = sprite;
-        state = PacketState.NotLaunchedYet;
+        GetComponent<SpriteRenderer>().sprite = sprite;
+        state = PacketState.ReadyToLaunch;
+        name = sprite.name;
     }
 
     private void Update()
@@ -45,7 +46,7 @@ public class Packet : MonoBehaviour
             if (Vector2.Distance(transform.position, destinationPosition) < 0.1)
             {
                 transform.position = destinationPosition;
-                state = PacketState.CorrectlyAssigned;
+                state = PacketState.Collected;
             }
         }
     }
@@ -92,6 +93,11 @@ public class Packet : MonoBehaviour
     internal void SetType(PacketType type)
     {
         this.packetType = type;
+    }
+
+    public void GoBackToLauncher()
+    {
+        parentSplittedImage.Enqueue(this.gameObject);
     }
 }
 
