@@ -10,13 +10,15 @@ public class PacketCollector : MonoBehaviour
     private PacketType currentPacketType = PacketType.None;
     public bool activeTrigger;
     public GameObject boomPrefab;
+    private Blower blower;
 
     private AudioSource audioSource;
 
-    void Start()
+    void Awake()
     {
+        blower = FindObjectOfType<Blower>();
         audioSource = GetComponent<AudioSource>();
-        particleSystem = transform.Find("ParticleSystem").GetComponent<ParticleSystem>();
+        particleSystem = transform.Find("Blower").GetComponent<ParticleSystem>();
         Invoke("StartParticleSystem", 1f);
     }
 
@@ -61,6 +63,7 @@ public class PacketCollector : MonoBehaviour
         {
             currentPacketType = PacketType.Good;
             particleSystem.startColor = Color.green;
+            blower.Set(PacketType.Good);
         }
     }
 
@@ -70,6 +73,8 @@ public class PacketCollector : MonoBehaviour
         {
             currentPacketType = PacketType.Bad;
             particleSystem.startColor = Color.red;
+            blower.Set(PacketType.Bad);
+
         }
     }
 
@@ -81,6 +86,7 @@ public class PacketCollector : MonoBehaviour
             Color myColor = Color.gray;
             myColor.a = 0.4f;
             particleSystem.startColor = myColor;
+            blower.Set(PacketType.None);
         }
     }
 
