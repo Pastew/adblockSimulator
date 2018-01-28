@@ -17,6 +17,8 @@ public class WebCam : MonoBehaviour
     private WebCamTexture webCamTexture;
     private PacketCollector packetCollector;
 
+    public bool oldCountRedMethod = false;
+
     void Start()
     {
         webCamTexture = new WebCamTexture();
@@ -40,8 +42,13 @@ public class WebCam : MonoBehaviour
 
         for (int i = 0; i < pixels.Length; ++i)
         {
-            if (pixels[i].r > pixels[i].g + pixels[i].b)
-                ++reds;
+            if (oldCountRedMethod)
+                if (pixels[i].r > pixels[i].g + pixels[i].b)
+                    ++reds;
+
+            if (!oldCountRedMethod)
+                if (pixels[i].r > pixels[i].g && pixels[i].r > pixels[i].b)
+                    ++reds;
 
             if (pixels[i].g > pixels[i].r && pixels[i].g > pixels[i].b)
                 ++greens;
@@ -49,13 +56,13 @@ public class WebCam : MonoBehaviour
             if (pixels[i].b > pixels[i].r && pixels[i].b > pixels[i].g)
                 ++blues;
         }
-            
-        if ( greens > greenThreshold)
+
+        if (greens > greenThreshold)
             packetCollector.CollectMode();
-        else if(reds > redThreshold)
+        else if (reds > redThreshold)
             packetCollector.DestroyMode();
         //else if (blues > blueThreshold)
-            //packetCollector.GoIntoBlue();
+        //packetCollector.GoIntoBlue();
         else
             packetCollector.TurnOff();
 

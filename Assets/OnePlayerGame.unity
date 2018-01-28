@@ -4644,13 +4644,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f715e021e59514ea5076b48fcb2cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redThreshold: 8000
+  redThreshold: 2000
   greenThreshold: 20000
   blueThreshold: 150000
-  reds: 0
-  greens: 0
-  blues: 0
+  reds: 113
+  greens: 1200
+  blues: 85911
   renderCam: 1
+  oldCountRedMethod: 1
 --- !u!4 &1353541224
 Transform:
   m_ObjectHideFlags: 0
