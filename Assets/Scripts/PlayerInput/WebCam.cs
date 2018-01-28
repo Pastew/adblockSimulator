@@ -51,9 +51,9 @@ public class WebCam : MonoBehaviour
         }
             
         if ( greens > greenThreshold)
-            packetCollector.CollectPackets();
+            packetCollector.CollectMode();
         else if(reds > redThreshold)
-            packetCollector.DestroyPackets();
+            packetCollector.DestroyMode();
         //else if (blues > blueThreshold)
             //packetCollector.GoIntoBlue();
         else

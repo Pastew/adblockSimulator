@@ -50,6 +50,9 @@ TagManager:
   - name: Packets
     uniqueID: 722226841
     locked: 0
+  - name: boom
+    uniqueID: 3914208087
+    locked: 0
   - name: Launchers
     uniqueID: 2883082235
     locked: 0

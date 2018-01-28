@@ -9,6 +9,7 @@ public class PacketCollector : MonoBehaviour
     private ParticleSystem particleSystem;
     private PacketType currentPacketType = PacketType.None;
     public bool activeTrigger;
+    public GameObject boomPrefab;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class PacketCollector : MonoBehaviour
         // user destroys packet
         if (currentPacketType == PacketType.Bad)
         {
+            Instantiate(boomPrefab, packet.transform.position, Quaternion.identity).transform.parent = transform;
             Destroy(packet.gameObject);
         }
     }
@@ -39,7 +41,7 @@ public class PacketCollector : MonoBehaviour
         activeTrigger = false;
     }
 
-    public void CollectPackets()
+    public void CollectMode()
     {
         if (currentPacketType != PacketType.Good)
         {
@@ -48,7 +50,7 @@ public class PacketCollector : MonoBehaviour
         }
     }
 
-    public void DestroyPackets()
+    public void DestroyMode()
     {
         if (currentPacketType != PacketType.Bad)
         {
