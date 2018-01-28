@@ -10,8 +10,9 @@ public class Packet : MonoBehaviour
     private Sprite sprite;
     private PacketState state;
     private PacketType packetType;
-    private float xSpeed;
+    public float xSpeed;
     private float rotationSpeed;
+    public GameObject boomPrefab;
 
     private Vector2 destinationPosition;
     private SplittedImage parentSplittedImage;
@@ -22,8 +23,9 @@ public class Packet : MonoBehaviour
         this.packetType = packetType;
         this.col = col;
         this.row = row;
-        this.sprite = sprite;
-        state = PacketState.NotLaunchedYet;
+        GetComponent<SpriteRenderer>().sprite = sprite;
+        state = PacketState.ReadyToLaunch;
+        name = sprite.name;
     }
 
     private void Update()
@@ -36,7 +38,7 @@ public class Packet : MonoBehaviour
             transform.Rotate(Vector3.forward * rotationSpeed);
         }
 
-        if (state == PacketState.MovingToDestination)
+        if (state == PacketState.MovingToCollectedDestination)
         {
             //gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 5f);
             transform.position = Vector2.Lerp(transform.position, destinationPosition, Time.deltaTime * 4f);
@@ -44,15 +46,17 @@ public class Packet : MonoBehaviour
 
             if (Vector2.Distance(transform.position, destinationPosition) < 0.1)
             {
+                print("reached destination " + name);
                 transform.position = destinationPosition;
-                state = PacketState.CorrectlyAssigned;
+                FindObjectOfType<RoundManager>().RewindPacketIfCollectedOnPosition(col, row);
+                state = PacketState.Collected;
             }
         }
     }
 
-    internal void OnCorrectlyCollected()
+    internal void OnCollected()
     {
-        state = PacketState.MovingToDestination;
+        state = PacketState.MovingToCollectedDestination;
         destinationPosition = GameObject.Find("GoodImageResult").transform.position;
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         float w = sr.sprite.bounds.size.x;
@@ -92,6 +96,18 @@ public class Packet : MonoBehaviour
     internal void SetType(PacketType type)
     {
         this.packetType = type;
+    }
+
+    public void GoBackToLauncher()
+    {
+        parentSplittedImage.Enqueue(this.gameObject);
+    }
+
+    public void Die()
+    {
+        Color color = (packetType == PacketType.Good) ? Color.green : Color.red;
+        Instantiate(boomPrefab, transform.position, Quaternion.identity, FindObjectOfType<BoomContainer>().transform).GetComponent<ParticleSystem>().startColor = color;
+        Destroy(gameObject);
     }
 }
 

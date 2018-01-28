@@ -29,11 +29,13 @@ public class RoundManager : MonoBehaviour
     {
         // Gunwo, popraw kiedyś.
         goodSplittedImage = new GameObject().AddComponent<SplittedImage>();
+        goodSplittedImage.name = "goodSplittedImage";
         goodSplittedImage.gameObject.transform.parent = transform;
         goodSplittedImage.GetComponent<SplittedImage>().packetPrefab = packetPrefab;
         goodSplittedImage.Init(goodImages[currentRound], PacketType.Good);
 
         badSplittedImage = new GameObject().AddComponent<SplittedImage>();
+        badSplittedImage.name = "badSplittedImage";
         badSplittedImage.gameObject.transform.parent = transform;
         badSplittedImage.GetComponent<SplittedImage>().packetPrefab = packetPrefab;
         badSplittedImage.Init(badImages[currentRound], PacketType.Bad);
@@ -43,36 +45,43 @@ public class RoundManager : MonoBehaviour
 
     public void LaunchNextPacket()
     {
-        if (goodSplittedImage.GetUnusedPacketsLeft() + badSplittedImage.GetUnusedPacketsLeft() == 0)
+        if (goodSplittedImage.AllPacketsCollected())
         {
+            print("Finish round");
             FinishRound();
             return;
         }
 
         PacketLauncher randomPacketLauncher = packetLaunchers[UnityEngine.Random.Range(0, packetLaunchers.Length)];
-        randomPacketLauncher.Launch(getNextRandomPacketFromRandomImage());
+        randomPacketLauncher.Launch(GetNextRandomPacketFromRandomImage());
+    }
+
+    internal void RewindPacketIfCollectedOnPosition(int col, int row)
+    {
+        goodSplittedImage.RewindPacketIfCollectedOnPosition(col, row);
+        badSplittedImage.RewindPacketIfCollectedOnPosition(col, row);
     }
 
     private void FinishRound()
     {
         CancelInvoke("LaunchNextPacket");
         currentRound++;
+        badSplittedImage.Die();
+        goodSplittedImage.Die();
         if(currentRound < badImages.Length)
             countdown.StartCountdown();
     }
 
-    private GameObject getNextRandomPacketFromRandomImage()
-    {
-        if (goodSplittedImage.GetUnusedPacketsLeft() + badSplittedImage.GetUnusedPacketsLeft() == 0)
-        {
-            Debug.LogError("No parts left to shoot. This should NEVER happen. Fix it");
-            return null;
-        }
 
-        if (goodSplittedImage.GetUnusedPacketsLeft() == 0)
+    private GameObject GetNextRandomPacketFromRandomImage()
+    {
+        if (goodSplittedImage.NoPackageToLaunch() && badSplittedImage.NoPackageToLaunch())
+            return null;
+
+        if (goodSplittedImage.NoPackageToLaunch())
             return badSplittedImage.GetNextPacket();
 
-        if (badSplittedImage.GetUnusedPacketsLeft() == 0)
+        if (badSplittedImage.NoPackageToLaunch())
             return goodSplittedImage.GetNextPacket();
 
         if (UnityEngine.Random.value > 0.5f)

@@ -10,6 +10,9 @@ public class PacketLauncher : MonoBehaviour
 
     internal void Launch(GameObject packet)
     {
+        if (null == packet)
+            return;
+
         packet.GetComponent<Packet>().Launch(
             xSpeed, 
             rotateMax * UnityEngine.Random.Range(-1f, 1f));

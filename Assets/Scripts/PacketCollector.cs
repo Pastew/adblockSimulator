@@ -25,24 +25,24 @@ public class PacketCollector : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        print("Triggered");
         Packet packet = collision.GetComponent<Packet>();
         if (packet.GetState() != PacketState.Flying)
             return;
 
         PacketType packetType = packet.GetPacketType();
-        
+
         // user destroys packet
         if (currentPacketType == PacketType.Bad)
         {
             Instantiate(boomPrefab, packet.transform.position, Quaternion.identity).transform.parent = transform;
-            Destroy(packet.gameObject);
+            //Destroy(packet.gameObject);
+            packet.GoBackToLauncher();
         }
 
-        // user collects good packet
-        if(currentPacketType == PacketType.Good && packetType == PacketType.Good)
+        // user collects any packet
+        if (currentPacketType == PacketType.Good)
         {
-            packet.OnCorrectlyCollected();
+            packet.OnCollected();
         }
     }
 

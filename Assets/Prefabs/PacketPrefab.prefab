@@ -91,6 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   col: 0
   row: 0
+  xSpeed: 0
+  boomPrefab: {fileID: 1399842264671512, guid: bc69a6fab8017d740a3f0ff9e19428bc, type: 2}
 --- !u!212 &212773058376285582
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -123,7 +125,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 722226841
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: 4c9e2ec7d12cfb4468e31f9d9fe892d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

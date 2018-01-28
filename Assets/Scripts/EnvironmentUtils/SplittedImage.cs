@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SplittedImage : MonoBehaviour {
+public class SplittedImage : MonoBehaviour
+{
 
     private FlyingPacketsContainer flyingPacketsContainer;
+    private PacketLauncher packetLauncher;
 
     Dictionary<int, int> lengthToColumsDict = new Dictionary<int, int>()
     {
@@ -16,6 +18,7 @@ public class SplittedImage : MonoBehaviour {
         {30, 6 }
     };
 
+    private List<GameObject> packetList;
     private Queue<GameObject> packetQueue;
     private int columns;
     private int rows;
@@ -24,6 +27,7 @@ public class SplittedImage : MonoBehaviour {
     private void Awake()
     {
         flyingPacketsContainer = FindObjectOfType<FlyingPacketsContainer>();
+        packetLauncher = FindObjectOfType<PacketLauncher>();
     }
 
     internal void Init(Texture2D texture, PacketType packetType)
@@ -33,18 +37,20 @@ public class SplittedImage : MonoBehaviour {
         rows = columns - 1;
 
         packetQueue = new Queue<GameObject>();
+        packetList = new List<GameObject>();
         int i = 0;
         for (int row = 0; row < rows; ++row)
             for (int col = 0; col < columns; ++col)
             {
                 GameObject packetGameObject = generatePacketGameObject(col, row, imageSprites[i++], packetType);
-                packetQueue.Enqueue(packetGameObject) ;
+                packetQueue.Enqueue(packetGameObject);
+                packetList.Add(packetGameObject);
             }
 
         Utils.Shuffle(packetQueue);
     }
 
-    private GameObject generatePacketGameObject(int col, int row, Sprite sprite, PacketType packet)
+    private GameObject generatePacketGameObject(int col, int row, Sprite sprite, PacketType packetType)
     {
         Transform parent = FindObjectOfType<PacketLauncher>().transform;
         GameObject packetGameObject = Instantiate(packetPrefab,
@@ -52,20 +58,14 @@ public class SplittedImage : MonoBehaviour {
             parent.rotation,
             parent);
 
-        Packet p = packetGameObject.GetComponent<Packet>();
-        p.SetType(packet);
-        p.col = col;
-        p.row = row;
-        SpriteRenderer sr = packetGameObject.GetComponent<SpriteRenderer>();
-        sr.sprite = sprite;
-        packetGameObject.name = sr.sprite.name;
+        packetGameObject.GetComponent<Packet>().Init(this, col, row, sprite, packetType);
 
         return packetGameObject;
     }
 
     internal GameObject GetNextPacket()
     {
-        if(packetQueue.Count == 0)
+        if (packetQueue.Count == 0)
         {
             Debug.LogError("There is no packet left! This should NEVER happen. Fix this!");
             return null;
@@ -74,20 +74,57 @@ public class SplittedImage : MonoBehaviour {
         return packetQueue.Dequeue();
     }
 
-    internal int GetUnusedPacketsLeft()
+    internal void Die()
     {
-        int unusedPacketsLeft = 0;
-        foreach(GameObject packet in packetQueue)
+        foreach (GameObject p in packetList)
         {
-            if (packet.GetComponent<Packet>().GetState() == PacketState.NotLaunchedYet)
-                ++unusedPacketsLeft;
+            p.GetComponent<Packet>().Die();
+        }
+        Destroy(gameObject);
+    }
+
+    internal bool AllPacketsCollected()
+    {
+        foreach (GameObject packet in packetList)
+        {
+            if (packet.GetComponent<Packet>().GetState() != PacketState.Collected)
+                return false;
         }
 
-        return unusedPacketsLeft;
+        return true;
+    }
+
+    internal bool NoPackageToLaunch()
+    {
+        foreach (GameObject packet in packetList)
+            if (packet.GetComponent<Packet>().GetState() == PacketState.ReadyToLaunch)
+                return false;
+
+        return true;
     }
 
     internal void Enqueue(GameObject packet)
     {
+        packet.transform.position = packetLauncher.transform.position;
+        packet.GetComponent<Packet>().xSpeed = 0;
+        packet.GetComponent<Packet>().SetState(PacketState.ReadyToLaunch);
         packetQueue.Enqueue(packet);
+    }
+
+    public void RewindPacketIfCollectedOnPosition(int col, int row)
+    {
+        print("entered rewind fun");
+        foreach (GameObject packetGO in packetList)
+        {
+            Packet p = packetGO.GetComponent<Packet>();
+            if (p.GetState() != PacketState.Collected)
+                continue;
+
+            if (p.col == col && p.row == row)
+            {
+                p.GoBackToLauncher();
+                print("Rewinding " + p.name);
+            }
+        }
     }
 }

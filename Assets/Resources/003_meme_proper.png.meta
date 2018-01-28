@@ -1,21 +1,21 @@
 fileFormatVersion: 2
-guid: 4c9e2ec7d12cfb4468e31f9d9fe892d9
-timeCreated: 1517024770
+guid: 9785b457973d3e7439661106e5e53565
+timeCreated: 1517106153
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ad_001_0
-    21300002: ad_001_1
-    21300004: ad_001_2
-    21300006: ad_001_3
-    21300008: ad_001_4
-    21300010: ad_001_5
-    21300012: ad_001_6
-    21300014: ad_001_7
-    21300016: ad_001_8
-    21300018: ad_001_9
-    21300020: ad_001_10
-    21300022: ad_001_11
+    21300000: 003_meme_proper_0
+    21300002: 003_meme_proper_1
+    21300004: 003_meme_proper_2
+    21300006: 003_meme_proper_3
+    21300008: 003_meme_proper_4
+    21300010: 003_meme_proper_5
+    21300012: 003_meme_proper_6
+    21300014: 003_meme_proper_7
+    21300016: 003_meme_proper_8
+    21300018: 003_meme_proper_9
+    21300020: 003_meme_proper_10
+    21300022: 003_meme_proper_11
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -102,13 +102,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ad_001_0
+      name: 003_meme_proper_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 150
-        width: 233.33333
-        height: 150
+        y: 286.6667
+        width: 144
+        height: 143.33333
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -116,13 +116,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ad_001_1
+      name: 003_meme_proper_1
       rect:
         serializedVersion: 2
-        x: 233
-        y: 150
-        width: 233.33333
-        height: 150
+        x: 144
+        y: 286.6667
+        width: 144
+        height: 143.33333
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,13 +130,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ad_001_2
+      name: 003_meme_proper_2
       rect:
         serializedVersion: 2
-        x: 466
-        y: 150
-        width: 233.33333
-        height: 150
+        x: 288
+        y: 286.6667
+        width: 144
+        height: 143.33333
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,13 +144,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ad_001_3
+      name: 003_meme_proper_3
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 286.6667
+        width: 144
+        height: 143.33333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 003_meme_proper_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 233.33333
-        height: 150
+        y: 143.66667
+        width: 144
+        height: 143.33333
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,13 +172,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ad_001_4
+      name: 003_meme_proper_5
       rect:
         serializedVersion: 2
-        x: 233
-        y: 0
-        width: 233.33333
-        height: 150
+        x: 144
+        y: 143.66667
+        width: 144
+        height: 143.33333
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,13 +186,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ad_001_5
+      name: 003_meme_proper_6
       rect:
         serializedVersion: 2
-        x: 466
-        y: 0
-        width: 233.33333
-        height: 150
+        x: 288
+        y: 143.66667
+        width: 144
+        height: 143.33333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 003_meme_proper_7
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 143.66667
+        width: 144
+        height: 143.33333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 003_meme_proper_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.66667175
+        width: 144
+        height: 143.33333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 003_meme_proper_9
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0.66667175
+        width: 144
+        height: 143.33333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 003_meme_proper_10
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0.66667175
+        width: 144
+        height: 143.33333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 003_meme_proper_11
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0.66667175
+        width: 144
+        height: 143.33333
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
