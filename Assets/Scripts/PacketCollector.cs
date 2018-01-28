@@ -9,6 +9,7 @@ public class PacketCollector : MonoBehaviour
     private ParticleSystem particleSystem;
     private PacketType currentPacketType = PacketType.None;
     public bool activeTrigger;
+    public GameObject boomPrefab;
 
     void Start()
     {
@@ -26,11 +27,22 @@ public class PacketCollector : MonoBehaviour
     {
         print("Triggered");
         Packet packet = collision.GetComponent<Packet>();
+        if (packet.GetState() != PacketState.Flying)
+            return;
 
+        PacketType packetType = packet.GetPacketType();
+        
         // user destroys packet
         if (currentPacketType == PacketType.Bad)
         {
+            Instantiate(boomPrefab, packet.transform.position, Quaternion.identity).transform.parent = transform;
             Destroy(packet.gameObject);
+        }
+
+        // user collects good packet
+        if(currentPacketType == PacketType.Good && packetType == PacketType.Good)
+        {
+            packet.OnCorrectlyCollected();
         }
     }
 
@@ -39,7 +51,7 @@ public class PacketCollector : MonoBehaviour
         activeTrigger = false;
     }
 
-    public void CollectPackets()
+    public void CollectMode()
     {
         if (currentPacketType != PacketType.Good)
         {
@@ -48,7 +60,7 @@ public class PacketCollector : MonoBehaviour
         }
     }
 
-    public void DestroyPackets()
+    public void DestroyMode()
     {
         if (currentPacketType != PacketType.Bad)
         {

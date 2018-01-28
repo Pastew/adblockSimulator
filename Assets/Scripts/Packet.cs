@@ -40,6 +40,7 @@ public class Packet : MonoBehaviour
         {
             //gameObject.transform.position = Vector2.MoveTowards(transform.position, destinationPosition, Time.deltaTime * 5f);
             transform.position = Vector2.Lerp(transform.position, destinationPosition, Time.deltaTime * 4f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.deltaTime * 10f);
 
             if (Vector2.Distance(transform.position, destinationPosition) < 0.1)
             {
@@ -49,28 +50,23 @@ public class Packet : MonoBehaviour
         }
     }
 
+    internal void OnCorrectlyCollected()
+    {
+        state = PacketState.MovingToDestination;
+        destinationPosition = GameObject.Find("GoodImageResult").transform.position;
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        float w = sr.sprite.bounds.size.x;
+        float h = sr.sprite.bounds.size.y;
+        destinationPosition.x += col * w + w * 0.5f;
+        destinationPosition.y -= row * h + h * 0.5f;
+    }
+
     internal void Launch(float xSpeed, float rotationSpeed)
     {
         state = PacketState.Flying;
         this.xSpeed = xSpeed;
         this.rotationSpeed = rotationSpeed;
         //this.rotationSpeed = 0;
-    }
-
-    internal void Assign(PacketType assignedTo)
-    {
-        if (assignedTo == PacketType.Good)
-        {
-            destinationPosition = GameObject.Find("GoodImageResult").transform.position;
-        }
-        else if (assignedTo == PacketType.Bad)
-        {
-            transform.position = FindObjectOfType<PacketLauncher>().transform.position;
-            transform.parent = FindObjectOfType<PacketLauncher>().transform;
-            parentSplittedImage.Enqueue(this.gameObject);
-        }
-
-        Invoke("SetupMoveToDestination", 0.5f);
     }
 
     public PacketState GetState()
@@ -91,23 +87,6 @@ public class Packet : MonoBehaviour
     internal PacketType GetPacketType()
     {
         return packetType;
-    }
-
-    private void SetupMoveToDestination()
-    {
-        print("chuj");
-        Destroy(GetComponent<Rigidbody2D>());
-        Destroy(GetComponent<BoxCollider2D>());
-        Destroy(GetComponent<TrailRenderer>());
-        transform.rotation = Quaternion.identity;
-
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        float w = sr.sprite.bounds.size.x;
-        float h = sr.sprite.bounds.size.y;
-        destinationPosition.x += col * w + w * 0.5f;
-        destinationPosition.y -= row * h + h * 0.5f;
-        //transform.position = destinationPosition;
-        state = PacketState.MovingToDestination;
     }
 
     internal void SetType(PacketType type)
