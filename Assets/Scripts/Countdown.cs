@@ -6,6 +6,7 @@ using UnityEngine;
 public class Countdown : MonoBehaviour {
 
     private SpriteRenderer sr;
+    public float delayBetweenSeconds = 1f;
     public Sprite[] sprites;
 
     private int currentSprite;
@@ -13,8 +14,9 @@ public class Countdown : MonoBehaviour {
     public void StartCountdown()
     {
         currentSprite = 0;
-        InvokeRepeating("NextNumber", 1, 1);
+        InvokeRepeating("NextNumber", 0, delayBetweenSeconds);
         sr = GetComponent<SpriteRenderer>();
+        GetComponent<AudioSource>().Play();
     }
 
     void NextNumber()
