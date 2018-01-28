@@ -11,8 +11,11 @@ public class PacketCollector : MonoBehaviour
     public bool activeTrigger;
     public GameObject boomPrefab;
 
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         particleSystem = transform.Find("ParticleSystem").GetComponent<ParticleSystem>();
         Invoke("StartParticleSystem", 1f);
     }
@@ -43,6 +46,7 @@ public class PacketCollector : MonoBehaviour
         if (currentPacketType == PacketType.Good)
         {
             packet.OnCollected();
+            audioSource.Play();
         }
     }
 
