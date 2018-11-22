@@ -2,8 +2,6 @@
 
 https://globalgamejam.org/2018/games/adblock-simulator
 
-**NOTE**: Even though repo is named *transmission*, actually it contains source code for a game called *Adblock Simulator*. This is because following game is a jam entry (for [Global Game Jam 2018](https://globalgamejam.org)), and at the moment repo was created, only this year's jam theme was known (which is *transmission*, of course).
-
 ## Introduction
 
 Your browser delivers to you great amount of data each day. However, alongside with your beloved cat pictures and memes there is always data you would rather not see - the ubiquitous demons of the web - the ADS. You probably use an ad blocker browser plugin, to help you hunt them down & forget they really exist. But do you think YOU can take it's place? 
