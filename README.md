@@ -17,6 +17,9 @@ In this little arcade/puzzle game you will be responsible for classifying correc
 5. Don't pieces of ads to get through security using red controller.
 6. Pass pieces of memes using green controller.  
 
+NOTE: Please make sure that there is nothing red or green in the background.
+NOTE2: Some shades of red/green might now work well. Try to use some other object.
+
 Example controllers:  
 ![Alt text](controllers.PNG?raw=true "controllers.PNG")  
 
