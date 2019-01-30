@@ -10,7 +10,7 @@ In this little arcade/puzzle game you will be responsible for classifying correc
 
 ## Game screenshoots
 ![Alt text](s1.PNG?raw=true "s1.PNG")  
-![Alt text](s2.PNG?raw=true "s2.PNG")  
+![Alt text](s3.PNG?raw=true "s3.PNG")  
 
 ## Introduction
 
