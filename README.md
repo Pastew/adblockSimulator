@@ -10,7 +10,15 @@ In this little arcade/puzzle game you will be responsible for classifying correc
 
 ## How to play
 
-TODO.
+1. Download the newest release https://github.com/Pastew/adblockSimulator/releases
+2. Make sure your webcam works.
+3. Find something that is green and something that is red - it will be your game controllers.
+4. Run the game. 
+5. Don't pieces of ads to get through security using red controller.
+6. Pass pieces of memes using green controller.  
+
+Example controllers:  
+![Alt text](controllers.PNG?raw=true "controllers.PNG")  
 
 ## Q&A
 
