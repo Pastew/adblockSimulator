@@ -1,7 +1,9 @@
-# KrakJam 2018 - Transmission
-https://globalgamejam.org/2018/games/adblock-simulator
+# Krak Jam 2019
+Subject: Tramsmission
 
-# AdBlock Simulator
+## Game we created: AdBlock Simulator
+https://globalgamejam.org/2018/games/adblock-simulator  
+
 Your browser delivers to you great amount of data each day. However, alongside with your beloved cat pictures and memes there is always data you would rather not see - the ubiquitous demons of the web - the ADS. You probably use an ad blocker browser plugin, to help you hunt them down & forget they really exist. But do you think YOU can take it's place?  
 
 In this little arcade/puzzle game you will be responsible for classifying correctly incoming packets of data. We will test your speed, observation skills and ability to multitask. Enjoy!
