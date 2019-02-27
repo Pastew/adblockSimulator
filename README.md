@@ -1,4 +1,4 @@
-# Krak Jam 2019
+# Krak Jam 2018
 Subject: Tramsmission
 
 ## Game we created: AdBlock Simulator
@@ -19,7 +19,12 @@ Your browser delivers to you great amount of data each day. However, alongside w
 In this little arcade/puzzle game you will be responsible for classifying correctly incoming packets of data. We will test your speed, observation skills and ability to multitask. Enjoy!  
 
 ## How to play
+### In browser
+Note: It doesn't work in Chrome 12 and IE 11
+It works in Firefox 60.5
+http://pastew.github.io/krakjam2019
 
+### On PC
 1. Download the newest release https://github.com/Pastew/adblockSimulator/releases
 2. Make sure your webcam works.
 3. Find something that is green and something that is red - it will be your game controllers.
